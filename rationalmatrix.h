@@ -27,4 +27,8 @@ public:
     friend std::ostream& operator<< (std::ostream &out, const RationalMatrix &m);
 };
 
+bool matrix_sum (const RationalMatrix &a,const RationalMatrix &b, RationalMatrix &c);
+
+bool matrix_sub (const RationalMatrix &a,const RationalMatrix &b, RationalMatrix &c);
+
 #endif //LAB1_RATIONALMATRIX_H

@@ -83,3 +83,43 @@ std::ostream& operator<< (std::ostream &out, const RationalMatrix &m)
     }
     return out;
 }
+
+bool matrix_sum (const RationalMatrix &a,const RationalMatrix &b, RationalMatrix &c)
+{
+    if (a.vSize != b.vSize || a.hSize != b.hSize)
+        return false;
+
+    c.vSize = a.vSize;
+    c.hSize = a.hSize;
+
+    c.field.resize(c.vSize);
+    for (size_t i = 0; i < c.vSize; i++)
+    {
+        c.field[i].resize(c.hSize);
+        for (size_t j = 0; j < c.hSize; j++)
+        {
+            c.field[i][j] = a.field[i][j] + b.field[i][j];
+        }
+    }
+    return true;
+}
+
+bool matrix_sub (const RationalMatrix &a,const RationalMatrix &b, RationalMatrix &c)
+{
+    if (a.vSize != b.vSize || a.hSize != b.hSize)
+        return false;
+
+    c.vSize = a.vSize;
+    c.hSize = a.hSize;
+
+    c.field.resize(c.vSize);
+    for (size_t i = 0; i < c.vSize; i++)
+    {
+        c.field[i].resize(c.hSize);
+        for (size_t j = 0; j < c.hSize; j++)
+        {
+            c.field[i][j] = a.field[i][j] - b.field[i][j];
+        }
+    }
+    return true;
+}
