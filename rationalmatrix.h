@@ -17,6 +17,12 @@ public:
     RationalMatrix();
 
     RationalMatrix(const size_t &n, const size_t &m);
+
+    void resize(const size_t &n, const size_t &m);
+
+    void make(const size_t &n, const size_t &m);
+
+    void copy(const RationalMatrix &m, const size_t &v0, const size_t &h0, const size_t &v1, const size_t &h1);
 };
 
 #endif //LAB1_RATIONALMATRIX_H
