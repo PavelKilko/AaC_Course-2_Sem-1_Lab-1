@@ -20,6 +20,8 @@ public:
 
     explicit Rational(int n, int d = 1);
 
+    void random(const int &n);
+
     friend std::ostream& operator<< (std::ostream &out, const Rational &r);
 
     friend Rational operator + (const Rational &r1,const Rational &r2);

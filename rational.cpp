@@ -3,6 +3,7 @@
 //
 
 #include "rational.h"
+#include <random>
 
 int gcd(int x, int y) // Euclidean algorithm
 {
@@ -39,6 +40,19 @@ Rational::Rational(int n, int d)
     denominator = d;
     if(!d)
         denominator = 1;
+    reduction(numerator, denominator);
+}
+
+void Rational::random(const int &n)
+{
+    std::random_device rd;
+    std::mt19937 mersenne(rd());
+    numerator = mersenne() % (abs(n)+1);
+    denominator = mersenne() % (abs(n)+1);
+    if (mersenne() % 2)
+        numerator *= -1;
+    if (mersenne() % 2)
+        denominator *= -1;
     reduction(numerator, denominator);
 }
 

@@ -55,6 +55,16 @@ void RationalMatrix::make(const size_t &n, const size_t &m)
     }
 }
 
+void RationalMatrix::random(const int &n)
+{
+    for (size_t i = 0; i < vSize; i++){
+        for (size_t j = 0; j < hSize; j++)
+        {
+            field[i][j].random(abs(n));
+        }
+    }
+}
+
 void RationalMatrix::copy(const RationalMatrix &m, const size_t &v0, const size_t &h0, const size_t &v1, const size_t &h1)
 {
     if(v0 < 0 || v0 >= m.vSize || v1 < 0 || v1 >= m.vSize || v0 > v1)
