@@ -27,8 +27,18 @@ public:
     friend std::ostream& operator<< (std::ostream &out, const RationalMatrix &m);
 };
 
-bool matrix_sum (const RationalMatrix &a,const RationalMatrix &b, RationalMatrix &c);
+bool matrix_sum (const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c);
 
-bool matrix_sub (const RationalMatrix &a,const RationalMatrix &b, RationalMatrix &c);
+bool matrix_sub (const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c);
+
+bool check(RationalMatrix &a, RationalMatrix &b, RationalMatrix &c);
+
+void quad_matrix_fusion(RationalMatrix &m, const RationalMatrix &a, const RationalMatrix &b, const RationalMatrix &c, const RationalMatrix &d, const size_t &k);
+
+bool normal_mul(const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c);
+
+void quick_mul(const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c, const size_t &k);
+
+bool strassen_matrix_mul(RationalMatrix &a, RationalMatrix &b, RationalMatrix &c);
 
 #endif //LAB1_RATIONALMATRIX_H
