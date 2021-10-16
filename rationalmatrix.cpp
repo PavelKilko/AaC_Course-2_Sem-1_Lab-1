@@ -94,6 +94,21 @@ std::ostream& operator<< (std::ostream &out, const RationalMatrix &m)
     return out;
 }
 
+bool operator== (const RationalMatrix &m1, const RationalMatrix &m2)
+{
+    if (m1.hSize != m2.hSize || m1.vSize != m2.vSize)
+        return false;
+    for (size_t i = 0 ; i < m1.vSize; i++)
+    {
+        for (size_t j = 0; j < m1.hSize; j++)
+        {
+            if (!(m1.field[i][j] == m2.field[i][j]))
+                return false;
+        }
+    }
+    return true;
+}
+
 bool matrix_sum (const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c)
 {
     if (a.vSize != b.vSize || a.hSize != b.hSize)
@@ -192,7 +207,7 @@ bool normal_matrix_mul(const RationalMatrix &a, const RationalMatrix &b, Rationa
 
 void quick_matrix_mul(const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c, const size_t &k)
 {
-    if(k <= 32) // k can range from 32 to 128 depending on the computing power
+    if(k <= 2) // k can range from 32 to 128 depending on the computing power
     {
         // Normal multiplication
         normal_matrix_mul(a, b, c);

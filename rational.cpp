@@ -102,3 +102,10 @@ Rational operator / (const Rational &r1, const Rational &r2)
     reduction(r3.numerator, r3.denominator);
     return r3;
 }
+
+bool operator ==(const Rational &r1, const Rational &r2)
+{
+    if (r1.numerator * r2.denominator == r2.numerator * r1.denominator)
+        return true;
+    return false;
+}

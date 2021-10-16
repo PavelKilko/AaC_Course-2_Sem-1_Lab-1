@@ -24,10 +24,12 @@ public:
 
     friend std::ostream& operator<< (std::ostream &out, const Rational &r);
 
-    friend Rational operator + (const Rational &r1,const Rational &r2);
-    friend Rational operator - (const Rational &r1,const Rational &r2);
-    friend Rational operator * (const Rational &r1,const Rational &r2);
-    friend Rational operator / (const Rational &r1, const Rational &r2);
+    friend Rational operator+ (const Rational &r1,const Rational &r2);
+    friend Rational operator- (const Rational &r1,const Rational &r2);
+    friend Rational operator* (const Rational &r1,const Rational &r2);
+    friend Rational operator/ (const Rational &r1, const Rational &r2);
+
+    friend bool operator== (const Rational &r1, const Rational &r2);
 };
 
 #endif //LAB1_RATIONAL_H
