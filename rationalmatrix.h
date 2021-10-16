@@ -12,8 +12,11 @@ class RationalMatrix
 {
 public:
     std::vector<std::vector<Rational>> field;
-    int vSize, hSize;
+    size_t vSize, hSize;
 
+    RationalMatrix();
+
+    RationalMatrix(const size_t &n, const size_t &m);
 };
 
 #endif //LAB1_RATIONALMATRIX_H
