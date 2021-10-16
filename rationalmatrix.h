@@ -23,6 +23,8 @@ public:
     void make(const size_t &n, const size_t &m);
 
     void copy(const RationalMatrix &m, const size_t &v0, const size_t &h0, const size_t &v1, const size_t &h1);
+
+    friend std::ostream& operator<< (std::ostream &out, const RationalMatrix &m);
 };
 
 #endif //LAB1_RATIONALMATRIX_H

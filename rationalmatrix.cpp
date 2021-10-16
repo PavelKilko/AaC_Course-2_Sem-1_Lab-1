@@ -71,3 +71,15 @@ void RationalMatrix::copy(const RationalMatrix &m, const size_t &v0, const size_
         field[i].assign(m.field[v0+i].begin() + h0, m.field[v0+i].begin() + h1 + 1);
     }
 }
+
+std::ostream& operator<< (std::ostream &out, const RationalMatrix &m)
+{
+    for (size_t i = 0; i < m.vSize; i++){
+        for (size_t j = 0; j < m.hSize; j++)
+        {
+            out << m.field[i][j] << ' ';
+        }
+        out << std::endl;
+    }
+    return out;
+}
