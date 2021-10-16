@@ -171,7 +171,7 @@ void quad_matrix_fusion(RationalMatrix &m, const RationalMatrix &a, const Ration
             m.field[i+k/2][j+k/2] = d.field[i][j];
 }
 
-bool normal_mul(const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c)
+bool normal_matrix_mul(const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c)
 {
     if (a.hSize != b.vSize)
         return false;
@@ -190,12 +190,12 @@ bool normal_mul(const RationalMatrix &a, const RationalMatrix &b, RationalMatrix
     return true;
 }
 
-void quick_mul(const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c, const size_t &k)
+void quick_matrix_mul(const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c, const size_t &k)
 {
-    if(k == 32) // k can range from 32 to 128 depending on the computing power
+    if(k <= 32) // k can range from 32 to 128 depending on the computing power
     {
         // Normal multiplication
-        normal_mul(a, b, c);
+        normal_matrix_mul(a, b, c);
         return;
     }
 
@@ -219,27 +219,27 @@ void quick_mul(const RationalMatrix &a, const RationalMatrix &b, RationalMatrix 
     // These calculations can be parallelized across multiple processor cores
     matrix_sum(a11, a22, d1);
     matrix_sum(b11, b22, d2);
-    quick_mul(d1, d2, p1, k/2);
+    quick_matrix_mul(d1, d2, p1, k/2);
 
     matrix_sum(a21, a22, d1);
-    quick_mul(d1, b11, p2, k/2);
+    quick_matrix_mul(d1, b11, p2, k/2);
 
     matrix_sub(b12, b22, d2);
-    quick_mul(a11, d2, p3, k/2);
+    quick_matrix_mul(a11, d2, p3, k/2);
 
     matrix_sub(b21, b11, d2);
-    quick_mul(a22, d2, p4, k/2);
+    quick_matrix_mul(a22, d2, p4, k/2);
 
     matrix_sum(a11, a12, d1);
-    quick_mul(d1, b22, p5, k/2);
+    quick_matrix_mul(d1, b22, p5, k/2);
 
     matrix_sub(a21, a11, d1);
     matrix_sum(b11, b12, d2);
-    quick_mul(d1, d2, p6, k/2);
+    quick_matrix_mul(d1, d2, p6, k/2);
 
     matrix_sub(a12, a22, d1);
     matrix_sum(b21, b22, d2);
-    quick_mul(d1, d2, p7, k/2);
+    quick_matrix_mul(d1, d2, p7, k/2);
 
     matrix_sum(p1, p4, d1);
     matrix_sum(p5, p7, d2);
@@ -270,7 +270,7 @@ bool strassen_matrix_mul(RationalMatrix &a, RationalMatrix &b, RationalMatrix &c
         return false;
 
     // Quick multiplication
-    quick_mul(a, b, c, a.hSize);
+    quick_matrix_mul(a, b, c, a.hSize);
 
     // Return to original dimensions
     a.resize(n, m);

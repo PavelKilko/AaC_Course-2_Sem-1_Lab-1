@@ -37,9 +37,9 @@ bool check(RationalMatrix &a, RationalMatrix &b, RationalMatrix &c);
 
 void quad_matrix_fusion(RationalMatrix &m, const RationalMatrix &a, const RationalMatrix &b, const RationalMatrix &c, const RationalMatrix &d, const size_t &k);
 
-bool normal_mul(const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c);
+bool normal_matrix_mul(const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c);
 
-void quick_mul(const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c, const size_t &k);
+void quick_matrix_mul(const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c, const size_t &k);
 
 bool strassen_matrix_mul(RationalMatrix &a, RationalMatrix &b, RationalMatrix &c);
 

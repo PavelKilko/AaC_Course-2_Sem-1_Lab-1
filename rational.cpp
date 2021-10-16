@@ -5,6 +5,9 @@
 #include "rational.h"
 #include <random>
 
+std::random_device rd;
+std::mt19937 mersenne(rd());
+
 int gcd(int x, int y) // Euclidean algorithm
 {
     if (y == 0) return x;
@@ -26,6 +29,10 @@ void reduction(int &x, int &y)
         x *= -1;
         y *= -1;
     }
+    if(y==0)
+    {
+        y = 1;
+    }
 }
 
 Rational::Rational()
@@ -45,8 +52,6 @@ Rational::Rational(int n, int d)
 
 void Rational::random(const int &n)
 {
-    std::random_device rd;
-    std::mt19937 mersenne(rd());
     numerator = mersenne() % (abs(n)+1);
     denominator = mersenne() % (abs(n)+1);
     if (mersenne() % 2)
