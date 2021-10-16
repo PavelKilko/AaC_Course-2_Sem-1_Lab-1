@@ -26,3 +26,18 @@ void reduction(int &x, int &y)
         y *= -1;
     }
 }
+
+Rational::Rational()
+{
+    numerator = 0;
+    denominator = 1;
+}
+
+Rational::Rational(int n, int d)
+{
+    numerator = n;
+    denominator = d;
+    if(!d)
+        denominator = 1;
+    reduction(numerator, denominator);
+}

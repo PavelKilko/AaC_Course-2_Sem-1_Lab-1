@@ -13,6 +13,10 @@ class Rational
 public:
     int numerator;
     int denominator;
+
+    Rational();
+
+    explicit Rational(int n, int d = 1);
 };
 
 #endif //LAB1_RATIONAL_H
