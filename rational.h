@@ -5,6 +5,8 @@
 #ifndef LAB1_RATIONAL_H
 #define LAB1_RATIONAL_H
 
+#include <iostream>
+
 int gcd(int x, int y);
 void reduction(int &x, int &y);
 
@@ -17,6 +19,13 @@ public:
     Rational();
 
     explicit Rational(int n, int d = 1);
+
+    friend std::ostream& operator<< (std::ostream &out, const Rational &r);
+
+    friend Rational operator + (const Rational &r1,const Rational &r2);
+    friend Rational operator - (const Rational &r1,const Rational &r2);
+    friend Rational operator * (const Rational &r1,const Rational &r2);
+    friend Rational operator / (const Rational &r1, const Rational &r2);
 };
 
 #endif //LAB1_RATIONAL_H

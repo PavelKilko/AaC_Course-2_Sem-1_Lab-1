@@ -41,3 +41,45 @@ Rational::Rational(int n, int d)
         denominator = 1;
     reduction(numerator, denominator);
 }
+
+std::ostream& operator<< (std::ostream &out, const Rational &r)
+{
+    out << r.numerator << '/' << r.denominator;
+    return out;
+}
+
+Rational operator + (const Rational &r1,const Rational &r2)
+{
+    Rational r3;
+    r3.denominator = r1.denominator * r2.denominator;
+    r3.numerator = r1.numerator * r2.denominator + r2.numerator * r1.denominator;
+    reduction(r3.numerator, r3.denominator);
+    return r3;
+}
+
+Rational operator - (const Rational &r1,const Rational &r2)
+{
+    Rational r3;
+    r3.denominator = r1.denominator * r2.denominator;
+    r3.numerator = r1.numerator * r2.denominator - r2.numerator * r1.denominator;
+    reduction(r3.numerator, r3.denominator);
+    return r3;
+}
+
+Rational operator * (const Rational &r1,const Rational &r2)
+{
+    Rational r3;
+    r3.denominator = r1.denominator * r2.denominator;
+    r3.numerator = r1.numerator * r2.numerator;
+    reduction(r3.numerator, r3.denominator);
+    return r3;
+}
+
+Rational operator / (const Rational &r1, const Rational &r2)
+{
+    Rational r3;
+    r3.denominator = r1.denominator * r2.numerator;
+    r3.numerator = r1.numerator * r2.denominator;
+    reduction(r3.numerator, r3.denominator);
+    return r3;
+}
