@@ -5,6 +5,9 @@
 #ifndef LAB1_RATIONAL_H
 #define LAB1_RATIONAL_H
 
+int gcd(int x, int y);
+void reduction(int &x, int &y);
+
 class Rational
 {
 public:
