@@ -22,7 +22,7 @@ public:
 
     void make(const size_t &n, const size_t &m);
 
-    void random(const int &n);
+    void random(const long long &n);
 
     void copy(const RationalMatrix &m, const size_t &v0, const size_t &h0, const size_t &v1, const size_t &h1);
 

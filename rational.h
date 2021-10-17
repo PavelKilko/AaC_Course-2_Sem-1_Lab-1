@@ -7,20 +7,20 @@
 
 #include <iostream>
 
-int gcd(int x, int y);
-void reduction(int &x, int &y);
+int gcd(long long x, long long y);
+void reduction(long long &x, long long &y);
 
 class Rational
 {
 public:
-    int numerator;
-    int denominator;
+    long long numerator;
+    long long denominator;
 
     Rational();
 
-    explicit Rational(int n, int d = 1);
+    explicit Rational(long long n, long long d = 1);
 
-    void random(const int &n);
+    void random(const long long &n);
 
     friend std::ostream& operator<< (std::ostream &out, const Rational &r);
 

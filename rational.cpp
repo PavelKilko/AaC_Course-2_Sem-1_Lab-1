@@ -8,13 +8,13 @@
 std::random_device rd;
 std::mt19937 mersenne(rd());
 
-int gcd(int x, int y) // Euclidean algorithm
+int gcd(long long x, long long y) // Euclidean algorithm
 {
     if (y == 0) return x;
     return gcd(y, x % y);
 }
 
-void reduction(int &x, int &y)
+void reduction(long long &x, long long &y)
 {
     int nod = gcd(x, y);
     if(!nod)
@@ -41,7 +41,7 @@ Rational::Rational()
     denominator = 1;
 }
 
-Rational::Rational(int n, int d)
+Rational::Rational(long long n, long long d)
 {
     numerator = n;
     denominator = d;
@@ -50,10 +50,10 @@ Rational::Rational(int n, int d)
     reduction(numerator, denominator);
 }
 
-void Rational::random(const int &n)
+void Rational::random(const long long &n)
 {
-    numerator = mersenne() % (abs(n)+1);
-    denominator = mersenne() % (abs(n)+1);
+    numerator = mersenne() % (std::abs(n)+1);
+    denominator = mersenne() % (std::abs(n)+1);
     if (mersenne() % 2)
         numerator *= -1;
     if (mersenne() % 2)

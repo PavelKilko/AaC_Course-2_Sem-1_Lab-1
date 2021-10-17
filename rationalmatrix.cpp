@@ -42,7 +42,7 @@ void RationalMatrix::make(const size_t &n, const size_t &m)
         field[i].resize(m);
         for (size_t j = 0; j < m; j++)
         {
-            int a, b;
+            long long a, b;
             char c;
             while(true)
             {
@@ -55,12 +55,12 @@ void RationalMatrix::make(const size_t &n, const size_t &m)
     }
 }
 
-void RationalMatrix::random(const int &n)
+void RationalMatrix::random(const long long &n)
 {
     for (size_t i = 0; i < vSize; i++){
         for (size_t j = 0; j < hSize; j++)
         {
-            field[i][j].random(abs(n));
+            field[i][j].random(std::abs(n));
         }
     }
 }
@@ -173,17 +173,15 @@ bool check(RationalMatrix &a, RationalMatrix &b, RationalMatrix &c)
 void quad_matrix_fusion(RationalMatrix &m, const RationalMatrix &a, const RationalMatrix &b, const RationalMatrix &c, const RationalMatrix &d, const size_t &k)
 {
     for (size_t i = 0; i < k/2; i++)
+    {
         for (size_t j = 0; j < k/2; j++)
+        {
             m.field[i][j] = a.field[i][j];
-    for (size_t i = 0; i < k/2; i++)
-        for (size_t j = 0; j < k/2; j++)
             m.field[i][j+k/2] = b.field[i][j];
-    for (size_t i = 0; i < k/2; i++)
-        for (int j = 0; j < k/2; j++)
             m.field[i+k/2][j] = c.field[i][j];
-    for (size_t i = 0; i < k/2; i++)
-        for (int j = 0; j < k/2; j++)
             m.field[i+k/2][j+k/2] = d.field[i][j];
+        }
+    }
 }
 
 bool normal_matrix_mul(const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c)
@@ -207,18 +205,18 @@ bool normal_matrix_mul(const RationalMatrix &a, const RationalMatrix &b, Rationa
 
 void quick_matrix_mul(const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c, const size_t &k)
 {
-    if(k <= 2) // k can range from 32 to 128 depending on the computing power
+    if(k <= 32) // k can range from 32 to 128 depending on the computing power
     {
         // Normal multiplication
         normal_matrix_mul(a, b, c);
         return;
     }
 
-    RationalMatrix a11, a12, a21, a22;
-    RationalMatrix b11, b12, b21, b22;
+    RationalMatrix a11(k/2, k/2), a12(k/2, k/2), a21(k/2, k/2), a22(k/2, k/2);
+    RationalMatrix b11(k/2, k/2), b12(k/2, k/2), b21(k/2, k/2), b22(k/2, k/2);
     RationalMatrix c11, c12, c21, c22;
     RationalMatrix d1, d2; // additional sub-matrices for calculations
-    RationalMatrix p1, p2, p3, p4, p5, p6, p7;
+    RationalMatrix p1(k/2, k/2), p2(k/2, k/2), p3(k/2, k/2), p4(k/2, k/2), p5(k/2, k/2), p6(k/2, k/2), p7(k/2, k/2);
 
     // Division of matrices A and B into 4 sub-matrices
     a11.copy(a, 0, 0, k/2-1, k/2-1);
@@ -257,8 +255,8 @@ void quick_matrix_mul(const RationalMatrix &a, const RationalMatrix &b, Rational
     quick_matrix_mul(d1, d2, p7, k/2);
 
     matrix_sum(p1, p4, d1);
-    matrix_sum(p5, p7, d2);
-    matrix_sub(d1, d2, c11);
+    matrix_sub(p7, p5, d2);
+    matrix_sum(d1, d2, c11);
 
     matrix_sum(p3, p5, c12);
 
