@@ -189,8 +189,13 @@ bool normal_matrix_mul(const RationalMatrix &a, const RationalMatrix &b, Rationa
     if (a.hSize != b.vSize)
         return false;
 
+    c.vSize = a.vSize;
+    c.hSize = b.hSize;
+
+    c.field.resize(c.vSize);
     for (size_t i = 0; i < c.vSize; i++)
     {
+        c.field[i].resize(c.hSize);
         for (size_t j = 0; j < c.hSize; j++)
         {
             Rational r;
@@ -212,8 +217,8 @@ void quick_matrix_mul(const RationalMatrix &a, const RationalMatrix &b, Rational
         return;
     }
 
-    RationalMatrix a11(k/2, k/2), a12(k/2, k/2), a21(k/2, k/2), a22(k/2, k/2);
-    RationalMatrix b11(k/2, k/2), b12(k/2, k/2), b21(k/2, k/2), b22(k/2, k/2);
+    RationalMatrix a11, a12, a21, a22;
+    RationalMatrix b11, b12, b21, b22;
     RationalMatrix c11, c12, c21, c22;
     RationalMatrix d1, d2; // additional sub-matrices for calculations
     RationalMatrix p1(k/2, k/2), p2(k/2, k/2), p3(k/2, k/2), p4(k/2, k/2), p5(k/2, k/2), p6(k/2, k/2), p7(k/2, k/2);
