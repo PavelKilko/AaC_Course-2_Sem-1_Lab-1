@@ -82,7 +82,7 @@ void RationalMatrix::copy(const RationalMatrix &m, const size_t &v0, const size_
     }
 }
 
-std::ostream& operator<< (std::ostream &out, const RationalMatrix &m)
+std::ostream& operator << (std::ostream &out, const RationalMatrix &m)
 {
     for (size_t i = 0; i < m.vSize; i++){
         for (size_t j = 0; j < m.hSize; j++)
@@ -94,7 +94,7 @@ std::ostream& operator<< (std::ostream &out, const RationalMatrix &m)
     return out;
 }
 
-bool operator== (const RationalMatrix &m1, const RationalMatrix &m2)
+bool operator == (const RationalMatrix &m1, const RationalMatrix &m2)
 {
     if (m1.hSize != m2.hSize || m1.vSize != m2.vSize)
         return false;
