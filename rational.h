@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-int gcd(long long x, long long y);
+long long gcd(long long x, long long y);
 void reduction(long long &x, long long &y);
 
 class Rational

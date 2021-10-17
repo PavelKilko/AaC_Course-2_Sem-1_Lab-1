@@ -5,7 +5,7 @@ int main() {
     int kMax = 512;
     int d = 5;
 
-    for (int k = 1; k < kMax; k++)
+    for (int k = 1; k <= kMax; k++)
     {
         std::cout << "Test#" << k << std::endl;
         std::cout << "####################################################################################################" << std::endl;

@@ -8,7 +8,7 @@
 std::random_device rd;
 std::mt19937 mersenne(rd());
 
-int gcd(long long x, long long y) // Euclidean algorithm
+long long gcd(long long x, long long y) // Euclidean algorithm
 {
     if (y == 0) return x;
     return gcd(y, x % y);
