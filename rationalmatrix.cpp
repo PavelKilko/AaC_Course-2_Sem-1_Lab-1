@@ -210,7 +210,7 @@ bool normal_matrix_mul(const RationalMatrix &a, const RationalMatrix &b, Rationa
 
 void quick_matrix_mul(const RationalMatrix &a, const RationalMatrix &b, RationalMatrix &c, const size_t &k)
 {
-    if(k <= 32) // k can range from 32 to 128 depending on the computing power
+    if(k <= 64) // k can range from 32 to 128 depending on the computing power
     {
         // Normal multiplication
         normal_matrix_mul(a, b, c);
